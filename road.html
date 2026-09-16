@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap Tech & Cybersecurity</title>
+
+<style>
+    :root {
+        --bg: #0b0f14;
+        --card: #111820;
+        --card2: #0d141c;
+        --text: #e6edf3;
+        --muted: #8b98a5;
+        --green: #39ff88;
+        --blue: #58a6ff;
+        --purple: #bc8cff;
+        --orange: #ffb454;
+        --red: #ff6b6b;
+        --border: #263341;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+    }
+
+    a {
+        color: var(--blue);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    header {
+        padding: 70px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+        background:
+            radial-gradient(circle at top, #12251c 0, transparent 45%),
+            var(--bg);
+    }
+
+    header h1 {
+        color: var(--green);
+        font-size: clamp(35px, 6vw, 70px);
+        margin: 0;
+        letter-spacing: -2px;
+    }
+
+    header p {
+        max-width: 850px;
+        margin: 20px auto;
+        color: var(--muted);
+        font-size: 18px;
+    }
+
+    .badge {
+        display: inline-block;
+        border: 1px solid var(--green);
+        color: var(--green);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(11,15,20,.95);
+        border-bottom: 1px solid var(--border);
+        padding: 12px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+
+    nav a {
+        margin: 5px 10px;
+        font-size: 13px;
+    }
+
+    main {
+        max-width: 1150px;
+        margin: auto;
+        padding: 40px 20px 100px;
+    }
+
+    section {
+        margin: 70px 0;
+        scroll-margin-top: 80px;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+    }
+
+    .number {
+        color: var(--green);
+        font-family: monospace;
+        font-size: 25px;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    h3 {
+        color: var(--blue);
+        margin-top: 0;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+    }
+
+    .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 22px;
+    }
+
+    .card:hover {
+        border-color: #405264;
+    }
+
+    .card ul {
+        padding-left: 20px;
+    }
+
+    .card li {
+        margin: 6px 0;
+    }
+
+    .tag {
+        display: inline-block;
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 4px;
+        background: #1a2530;
+        color: var(--muted);
+        margin: 2px;
+    }
+
+    .green { color: var(--green); }
+    .blue { color: var(--blue); }
+    .purple { color: var(--purple); }
+    .orange { color: var(--orange); }
+    .red { color: var(--red); }
+
+    .timeline {
+        border-left: 2px solid var(--border);
+        margin-left: 15px;
+        padding-left: 25px;
+    }
+
+    .phase {
+        position: relative;
+        margin-bottom: 35px;
+    }
+
+    .phase::before {
+        content: "";
+        position: absolute;
+        left: -34px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 12px rgba(57,255,136,.4);
+    }
+
+    .phase h3 {
+        margin-bottom: 5px;
+    }
+
+    .code {
+        background: #070b0f;
+        border: 1px solid var(--border);
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: monospace;
+        color: #b7f7ce;
+        white-space: pre-wrap;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card);
+    }
+
+    th, td {
+        padding: 13px;
+        border: 1px solid var(--border);
+        text-align: left;
+    }
+
+    th {
+        color: var(--green);
+        background: #0d151d;
+    }
+
+    .warning {
+        border-left: 4px solid var(--orange);
+        background: #19160e;
+        padding: 18px;
+        margin: 25px 0;
+    }
+
+    .success {
+        border-left: 4px solid var(--green);
+        background: #0d1a13;
+        padding: 18px;
+        margin: 25px 0;
+    }
+
+    footer {
+        text-align: center;
+        padding: 50px 20px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+    }
+
+    @media(max-width:700px) {
+        nav {
+            position: static;
+        }
+
+        header {
+            padding: 45px 15px;
+        }
+
+        main {
+            padding: 25px 15px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="badge">ROADMAP 2026 → EXPERT</div>
+
+    <h1>TECH × CYBER</h1>
+
+    <p>
+        Une roadmap complète pour comprendre l'informatique,
+        programmer, administrer des systèmes, comprendre les réseaux,
+        les bases de données, le Web, la cybersécurité, le pentest,
+        le reverse engineering, le cloud et la défense.
+    </p>
+
+    <p class="green">
+        Comprendre → Construire → Casser en laboratoire → Défendre
+    </p>
+</header>
+
+<nav>
+    <a href="#vision">Vision</a>
+    <a href="#fondamentaux">Fondamentaux</a>
+    <a href="#linux">Linux</a>
+    <a href="#code">Code</a>
+    <a href="#reseaux">Réseaux</a>
+    <a href="#web">Web</a>
+    <a href="#db">Databases</a>
+    <a href="#crypto">Crypto</a>
+    <a href="#cyber">Cyber</a>
+    <a href="#pentest">Pentest</a>
+    <a href="#windows">AD</a>
+    <a href="#reverse">Reverse</a>
+    <a href="#cloud">Cloud</a>
+    <a href="#blue">Blue Team</a>
+    <a href="#projets">Projets</a>
+    <a href="#ressources">Ressources</a>
+</nav>
+
+<main>
+
+<section id="vision">
+
+    <div class="section-title">
+        <span class="number">00</span>
+        <h2>La vision</h2>
+    </div>
+
+    <div class="card">
+        <h3>Le but</h3>
+
+        <p>
+            Le but n'est pas de connaître quelques commandes de hacking.
+            Le but est de comprendre suffisamment l'informatique pour
+            pouvoir analyser un système de bout en bout.
+        </p>
+
+        <div class="code">
+Utilisateur
+    ↓
+Application
+    ↓
+API
+    ↓
+Web server
+    ↓
+OS
+    ↓
+Processus
+    ↓
+Kernel
+    ↓
+CPU / RAM / Disque
+    ↓
+Réseau
+    ↓
+Infrastructure
+    ↓
+Cloud / Databases
+    </div>
+
+        <p>
+            Puis apprendre à construire, sécuriser, tester et analyser
+            chacun de ces composants.
+        </p>
+    </div>
+
+</section>
+
+
+<section id="fondamentaux">
+
+    <div class="section-title">
+        <span class="number">01</span>
+        <h2>Fondamentaux informatiques</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Hardware</h3>
+            <ul>
+                <li>CPU</li>
+                <li>RAM</li>
+                <li>Cache</li>
+                <li>GPU</li>
+                <li>SSD / HDD</li>
+                <li>Bus</li>
+                <li>Interruptions</li>
+                <li>Architecture x86-64</li>
+                <li>UEFI / BIOS</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>OS</h3>
+            <ul>
+                <li>Kernel</li>
+                <li>Processus</li>
+                <li>Threads</li>
+                <li>Mémoire virtuelle</li>
+                <li>Filesystem</li>
+                <li>Permissions</li>
+                <li>Syscalls</li>
+                <li>Drivers</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Représentation</h3>
+            <ul>
+                <li>Binaire</li>
+                <li>Hexadécimal</li>
+                <li>ASCII / Unicode</li>
+                <li>Encodage</li>
+                <li>Endianness</li>
+                <li>Bits / bytes</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="linux">
+
+    <div class="section-title">
+        <span class="number">02</span>
+        <h2>Linux & systèmes</h2>
+    </div>
+
+    <div class="card">
+
+        <h3>À maîtriser</h3>
+
+        <div>
+            <span class="tag">Filesystem</span>
+            <span class="tag">Permissions</span>
+            <span class="tag">Users</span>
+            <span class="tag">Groups</span>
+            <span class="tag">Processes</span>
+            <span class="tag">Services</span>
+            <span class="tag">systemd</span>
+            <span class="tag">SSH</span>
+            <span class="tag">Cron</span>
+            <span class="tag">Logs</span>
+        </div>
+
+        <h3>Commandes</h3>
+
+        <div class="code">
+ls cd pwd
+find grep awk sed
+cat less head tail
+chmod chown
+ps top kill
+systemctl journalctl
+ip ss
+curl wget
+ssh scp
+tar
+        </div>
+
+        <h3>Objectifs</h3>
+
+        <ul>
+            <li>Installer une machine Linux.</li>
+            <li>Administrer des utilisateurs.</li>
+            <li>Configurer SSH.</li>
+            <li>Analyser les processus.</li>
+            <li>Lire les logs.</li>
+            <li>Configurer un service.</li>
+            <li>Comprendre les permissions.</li>
+            <li>Automatiser l'administration.</li>
+        </ul>
+
+    </div>
+
+</section>
+
+
+<section id="code">
+
+    <div class="section-title">
+        <span class="number">03</span>
+        <h2>Programmation</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Python</h3>
+            <ul>
+                <li>Variables / types</li>
+                <li>Conditions</li>
+                <li>Boucles</li>
+                <li>Fonctions</li>
+                <li>Exceptions</li>
+                <li>Classes</li>
+                <li>Modules</li>
+                <li>JSON</li>
+                <li>HTTP</li>
+                <li>Sockets</li>
+                <li>Async</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>C</h3>
+            <ul>
+                <li>Pointeurs</li>
+                <li>Memory management</li>
+                <li>Stack</li>
+                <li>Heap</li>
+                <li>Structs</li>
+                <li>Compilation</li>
+                <li>Syscalls</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>À connaître ensuite</h3>
+            <ul>
+                <li>JavaScript / TypeScript</li>
+                <li>Bash</li>
+                <li>PowerShell</li>
+                <li>SQL</li>
+                <li>Assembly</li>
+                <li>Git</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="success">
+        <strong>Règle :</strong>
+        ne collectionne pas les langages. Apprends profondément
+        Python + C + JavaScript + SQL, puis ajoute ce dont tes projets
+        ont besoin.
+    </div>
+
+</section>
+
+
+<section id="reseaux">
+
+    <div class="section-title">
+        <span class="number">04</span>
+        <h2>Réseaux</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Fondamentaux</h3>
+            <ul>
+                <li>OSI</li>
+                <li>TCP/IP</li>
+                <li>Ethernet</li>
+                <li>MAC</li>
+                <li>ARP</li>
+                <li>IPv4 / IPv6</li>
+                <li>Subnetting</li>
+                <li>Routing</li>
+                <li>NAT</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Protocoles</h3>
+            <ul>
+                <li>TCP</li>
+                <li>UDP</li>
+                <li>ICMP</li>
+                <li>DNS</li>
+                <li>DHCP</li>
+                <li>HTTP / HTTPS</li>
+                <li>TLS</li>
+                <li>SSH</li>
+                <li>SMTP</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Outils</h3>
+            <ul>
+                <li>Wireshark</li>
+                <li>tcpdump</li>
+                <li>Nmap</li>
+                <li>curl</li>
+                <li>dig</li>
+                <li>netcat</li>
+                <li>ss</li>
+                <li>traceroute</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Question à savoir résoudre</h3>
+
+        <p>
+            Que se passe-t-il lorsque tu écris une URL dans ton navigateur ?
+        </p>
+
+        <div class="code">
+URL
+ ↓
+DNS
+ ↓
+IP
+ ↓
+Routing
+ ↓
+TCP
+ ↓
+TLS
+ ↓
+HTTP
+ ↓
+Web Server
+ ↓
+Application
+ ↓
+Database
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="web">
+
+    <div class="section-title">
+        <span class="number">05</span>
+        <h2>Web & APIs</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Frontend</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>DOM</li>
+                <li>Browser</li>
+                <li>Cookies</li>
+                <li>Storage</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Backend</h3>
+            <ul>
+                <li>HTTP</li>
+                <li>REST</li>
+                <li>GraphQL</li>
+                <li>WebSockets</li>
+                <li>Authentication</li>
+                <li>Sessions</li>
+                <li>JWT</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Infrastructure</h3>
+            <ul>
+                <li>Reverse proxy</li>
+                <li>Load balancer</li>
+                <li>CDN</li>
+                <li>Caching</li>
+                <li>TLS</li>
+                <li>DNS</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="db">
+
+    <div class="section-title">
+        <span class="number">06</span>
+        <h2>Databases</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>SQL</h3>
+            <ul>
+                <li>SELECT</li>
+                <li>INSERT</li>
+                <li>UPDATE</li>
+                <li>DELETE</li>
+                <li>JOIN</li>
+                <li>GROUP BY</li>
+                <li>Subqueries</li>
+                <li>CTE</li>
+                <li>Views</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Architecture DB</h3>
+            <ul>
+                <li>Indexes</li>
+                <li>B-Trees</li>
+                <li>Transactions</li>
+                <li>ACID</li>
+                <li>Locks</li>
+                <li>Concurrency</li>
+                <li>Isolation</li>
+                <li>Replication</li>
+                <li>Backup / Recovery</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>NoSQL</h3>
+            <ul>
+                <li>Redis</li>
+                <li>MongoDB</li>
+                <li>Elasticsearch</li>
+                <li>Key-value</li>
+                <li>Document databases</li>
+                <li>Search engines</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="success">
+        <strong>Projet :</strong>
+        construis une API complète avec authentification,
+        PostgreSQL, migrations, indexes, transactions et logs.
+    </div>
+
+</section>
+
+
+<section id="crypto">
+
+    <div class="section-title">
+        <span class="number">07</span>
+        <h2>Cryptographie</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Concepts</h3>
+            <ul>
+                <li>Hash</li>
+                <li>Salt</li>
+                <li>MAC</li>
+                <li>Signature</li>
+                <li>Encryption</li>
+                <li>Randomness</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Algorithmes</h3>
+            <ul>
+                <li>AES</li>
+                <li>RSA</li>
+                <li>ECC</li>
+                <li>SHA-2 / SHA-3</li>
+                <li>HMAC</li>
+                <li>Argon2</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Protocoles</h3>
+            <ul>
+                <li>TLS</li>
+                <li>HTTPS</li>
+                <li>SSH</li>
+                <li>PKI</li>
+                <li>Certificates</li>
+                <li>Key exchange</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="cyber">
+
+    <div class="section-title">
+        <span class="number">08</span>
+        <h2>Cybersécurité</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Security fundamentals</h3>
+            <ul>
+                <li>Confidentialité</li>
+                <li>Intégrité</li>
+                <li>Disponibilité</li>
+                <li>Authentification</li>
+                <li>Autorisation</li>
+                <li>Least privilege</li>
+                <li>Threat modeling</li>
+                <li>Risk</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Web Security</h3>
+            <ul>
+                <li>Broken Access Control</li>
+                <li>Security Misconfiguration</li>
+                <li>Supply Chain</li>
+                <li>Cryptographic Failures</li>
+                <li>Injection</li>
+                <li>Insecure Design</li>
+                <li>Authentication Failures</li>
+                <li>Logging & Alerting</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Concepts offensifs</h3>
+            <ul>
+                <li>Reconnaissance</li>
+                <li>Enumeration</li>
+                <li>Vulnerability assessment</li>
+                <li>Exploitation</li>
+                <li>Privilege escalation</li>
+                <li>Lateral movement</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="warning">
+        <strong>IMPORTANT :</strong>
+        les techniques offensives doivent être pratiquées uniquement
+        sur tes propres machines, des CTF/labs ou des systèmes pour
+        lesquels tu disposes d'une autorisation explicite.
+    </div>
+
+</section>
+
+
+<section id="pentest">
+
+    <div class="section-title">
+        <span class="number">09</span>
+        <h2>Pentest & Offensive Security</h2>
+    </div>
+
+    <div class="timeline">
+
+        <div class="phase">
+            <h3>Reconnaissance</h3>
+            <p>
+                Comprendre la cible et son périmètre dans un environnement autorisé.
+            </p>
+        </div>
+
+        <div class="phase">
+            <h3>Enumeration</h3>
+            <p>
+                Identifier services, technologies, interfaces et surfaces d'attaque.
+            </p>
+        </div>
+
+        <div class="phase">
+            <h3>Vulnerability Analysis</h3>
+            <p>
+                Comprendre les vulnérabilités et leurs conditions d'existence.
+            </p>
+        </div>
+
+        <div class="phase">
+            <h3>Exploitation en laboratoire</h3>
+            <p>
+                Reproduire les vulnérabilités dans des environnements conçus
+                pour l'apprentissage.
+            </p>
+        </div>
+
+        <div class="phase">
+            <h3>Privilege Escalation</h3>
+            <p>
+                Comprendre les mécanismes qui permettent à un utilisateur
+                de dépasser ses privilèges dans un lab.
+            </p>
+        </div>
+
+        <div class="phase">
+            <h3>Reporting</h3>
+            <p>
+                Décrire la vulnérabilité, son impact, sa reproduction
+                et sa remédiation.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <h3>Outils à connaître</h3>
+
+        <p>
+            <span class="tag">Nmap</span>
+            <span class="tag">Burp Suite</span>
+            <span class="tag">Wireshark</span>
+            <span class="tag">ffuf</span>
+            <span class="tag">Gobuster</span>
+            <span class="tag">Metasploit</span>
+            <span class="tag">John</span>
+            <span class="tag">Hashcat</span>
+        </p>
+
+        <p>
+            Apprends d'abord ce que fait chaque outil avant d'apprendre
+            ses options.
+        </p>
+    </div>
+
+</section>
+
+
+<section id="windows">
+
+    <div class="section-title">
+        <span class="number">10</span>
+        <h2>Windows & Active Directory</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Windows</h3>
+            <ul>
+                <li>NTFS</li>
+                <li>Registry</li>
+                <li>Services</li>
+                <li>Processes</li>
+                <li>PowerShell</li>
+                <li>Event Logs</li>
+                <li>Windows Security</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Active Directory</h3>
+            <ul>
+                <li>Domains</li>
+                <li>Users</li>
+                <li>Groups</li>
+                <li>Computers</li>
+                <li>OUs</li>
+                <li>Group Policy</li>
+                <li>LDAP</li>
+                <li>DNS</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Authentication</h3>
+            <ul>
+                <li>Kerberos</li>
+                <li>NTLM</li>
+                <li>Tickets</li>
+                <li>SPNs</li>
+                <li>Trusts</li>
+                <li>Delegation</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="reverse">
+
+    <div class="section-title">
+        <span class="number">11</span>
+        <h2>Low-Level & Reverse Engineering</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>C / Memory</h3>
+            <ul>
+                <li>Pointers</li>
+                <li>Stack</li>
+                <li>Heap</li>
+                <li>Memory corruption</li>
+                <li>Calling conventions</li>
+                <li>Syscalls</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Assembly</h3>
+            <ul>
+                <li>x86-64</li>
+                <li>Registers</li>
+                <li>Instructions</li>
+                <li>Stack frames</li>
+                <li>Control flow</li>
+                <li>Calling conventions</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Binary analysis</h3>
+            <ul>
+                <li>ELF</li>
+                <li>PE</li>
+                <li>Linking</li>
+                <li>Loading</li>
+                <li>Dynamic libraries</li>
+                <li>Debugging</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Outils</h3>
+            <ul>
+                <li>GDB</li>
+                <li>Ghidra</li>
+                <li>IDA</li>
+                <li>objdump</li>
+                <li>readelf</li>
+                <li>strace</li>
+                <li>ltrace</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="success">
+        <strong>Projet :</strong>
+        écris un petit programme en C, compile-le, désassemble-le,
+        puis analyse son fonctionnement avec un debugger et un outil
+        de reverse engineering.
+    </div>
+
+</section>
+
+
+<section id="cloud">
+
+    <div class="section-title">
+        <span class="number">12</span>
+        <h2>Cloud & DevOps</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Containers</h3>
+            <ul>
+                <li>Docker</li>
+                <li>Images</li>
+                <li>Volumes</li>
+                <li>Networks</li>
+                <li>Registries</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Orchestration</h3>
+            <ul>
+                <li>Kubernetes</li>
+                <li>Pods</li>
+                <li>Services</li>
+                <li>Ingress</li>
+                <li>Secrets</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Cloud</h3>
+            <ul>
+                <li>AWS</li>
+                <li>Azure</li>
+                <li>GCP</li>
+                <li>IAM</li>
+                <li>VPC</li>
+                <li>Object Storage</li>
+                <li>Cloud Logging</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>DevSecOps</h3>
+            <ul>
+                <li>CI/CD</li>
+                <li>GitHub Actions</li>
+                <li>Terraform</li>
+                <li>SAST</li>
+                <li>DAST</li>
+                <li>Secrets management</li>
+                <li>Supply chain security</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="blue">
+
+    <div class="section-title">
+        <span class="number">13</span>
+        <h2>Blue Team / Défense</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>SOC</h3>
+            <ul>
+                <li>Logs</li>
+                <li>Alerting</li>
+                <li>SIEM</li>
+                <li>EDR</li>
+                <li>IDS / IPS</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Threat Hunting</h3>
+            <ul>
+                <li>Indicators</li>
+                <li>Behavior</li>
+                <li>Detection rules</li>
+                <li>Correlation</li>
+                <li>Investigation</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Incident Response</h3>
+            <ul>
+                <li>Identification</li>
+                <li>Containment</li>
+                <li>Eradication</li>
+                <li>Recovery</li>
+                <li>Lessons learned</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Forensics</h3>
+            <ul>
+                <li>Disk analysis</li>
+                <li>Memory analysis</li>
+                <li>Timeline</li>
+                <li>Artifacts</li>
+                <li>Evidence</li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="projets">
+
+    <div class="section-title">
+        <span class="number">14</span>
+        <h2>Projets à réaliser</h2>
+    </div>
+
+    <div class="card">
+
+        <h3>Débutant</h3>
+
+        <ol>
+            <li>Installer Linux.</li>
+            <li>Créer un serveur SSH.</li>
+            <li>Écrire des scripts Bash.</li>
+            <li>Écrire un programme Python.</li>
+            <li>Créer une API.</li>
+        </ol>
+
+        <h3>Intermédiaire</h3>
+
+        <ol>
+            <li>Créer une application Web.</li>
+            <li>Ajouter PostgreSQL.</li>
+            <li>Ajouter authentification.</li>
+            <li>Dockeriser l'application.</li>
+            <li>Analyser le trafic avec Wireshark.</li>
+            <li>Créer un réseau virtuel.</li>
+        </ol>
+
+        <h3>Avancé</h3>
+
+        <ol>
+            <li>Construire un lab Active Directory.</li>
+            <li>Créer une application volontairement vulnérable.</li>
+            <li>Tester cette application dans ton lab.</li>
+            <li>Corriger les vulnérabilités.</li>
+            <li>Créer des règles de détection.</li>
+            <li>Analyser un binaire avec Ghidra.</li>
+            <li>Construire un mini SOC.</li>
+        </ol>
+
+    </div>
+
+</section>
+
+
+<section id="planning">
+
+    <div class="section-title">
+        <span class="number">15</span>
+        <h2>Planning 12 mois</h2>
+    </div>
+
+    <table>
+
+        <tr>
+            <th>Mois</th>
+            <th>Objectif</th>
+            <th>Projet</th>
+        </tr>
+
+        <tr>
+            <td>01</td>
+            <td>Linux + terminal</td>
+            <td>Serveur Linux</td>
+        </tr>
+
+        <tr>
+            <td>02</td>
+            <td>Python + Git</td>
+            <td>Outils Python</td>
+        </tr>
+
+        <tr>
+            <td>03</td>
+            <td>Réseaux</td>
+            <td>Lab réseau</td>
+        </tr>
+
+        <tr>
+            <td>04</td>
+            <td>Web + HTTP</td>
+            <td>Application Web</td>
+        </tr>
+
+        <tr>
+            <td>05</td>
+            <td>SQL + Databases</td>
+            <td>API + PostgreSQL</td>
+        </tr>
+
+        <tr>
+            <td>06</td>
+            <td>Security fundamentals</td>
+            <td>Threat model</td>
+        </tr>
+
+        <tr>
+            <td>07</td>
+            <td>Web Security</td>
+            <td>Labs Web</td>
+        </tr>
+
+        <tr>
+            <td>08</td>
+            <td>Pentest</td>
+            <td>Lab offensif</td>
+        </tr>
+
+        <tr>
+            <td>09</td>
+            <td>Windows + AD</td>
+            <td>Lab AD</td>
+        </tr>
+
+        <tr>
+            <td>10</td>
+            <td>C + systèmes</td>
+            <td>Programme bas niveau</td>
+        </tr>
+
+        <tr>
+            <td>11</td>
+            <td>Reverse Engineering</td>
+            <td>Analyse de binaires</td>
+        </tr>
+
+        <tr>
+            <td>12</td>
+            <td>Cloud + Blue Team</td>
+            <td>Mini SOC</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+<section id="ressources">
+
+    <div class="section-title">
+        <span class="number">16</span>
+        <h2>Ressources</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Web Security</h3>
+
+            <ul>
+                <li>
+                    <a href="https://portswigger.net/web-security"
+                       target="_blank">
+                       PortSwigger Web Security Academy
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://top10.owasp.org/2025/"
+                       target="_blank">
+                       OWASP Top 10 — 2025
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://owasp.org/www-project-web-security-testing-guide/"
+                       target="_blank">
+                       OWASP Web Security Testing Guide
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="card">
+            <h3>Linux</h3>
+
+            <ul>
+                <li>
+                    <a href="https://linuxcommand.org/"
+                       target="_blank">
+                       Linux Command
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://man7.org/linux/man-pages/"
+                       target="_blank">
+                       Linux man-pages
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="card">
+            <h3>Programmation</h3>
+
+            <ul>
+                <li>
+                    <a href="https://docs.python.org/3/"
+                       target="_blank">
+                       Python Documentation
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://en.cppreference.com/"
+                       target="_blank">
+                       cppreference
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://developer.mozilla.org/"
+                       target="_blank">
+                       MDN Web Docs
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://git-scm.com/doc"
+                       target="_blank">
+                       Git Documentation
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="card">
+            <h3>Réseaux</h3>
+
+            <ul>
+                <li>
+                    <a href="https://www.wireshark.org/docs/"
+                       target="_blank">
+                       Wireshark Documentation
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://nmap.org/book/"
+                       target="_blank">
+                       Nmap Reference
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="card">
+            <h3>Reverse Engineering</h3>
+
+            <ul>
+                <li>
+                    <a href="https://ghidra-sre.org/"
+                       target="_blank">
+                       Ghidra
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://sourceware.org/gdb/"
+                       target="_blank">
+                       GNU GDB
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://refspecs.linuxbase.org/elf/elf.pdf"
+                       target="_blank">
+                       ELF Specification
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="card">
+            <h3>Pratique / CTF</h3>
+
+            <ul>
+                <li>
+                    <a href="https://overthewire.org/wargames/"
+                       target="_blank">
+                       OverTheWire
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://picoctf.org/"
+                       target="_blank">
+                       picoCTF
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://portswigger.net/web-security/all-labs"
+                       target="_blank">
+                       PortSwigger Labs
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="method">
+
+    <div class="section-title">
+        <span class="number">17</span>
+        <h2>Méthode de travail</h2>
+    </div>
+
+    <div class="card">
+
+        <h3>Chaque notion doit passer par 5 étapes</h3>
+
+        <div class="code">
+1. COMPRENDRE
+       ↓
+2. LIRE LA DOCUMENTATION
+       ↓
+3. CONSTRUIRE
+       ↓
+4. EXPÉRIMENTER EN LAB
+       ↓
+5. EXPLIQUER À QUELQU'UN
+        </div>
+
+        <p>
+            Si tu peux expliquer un concept simplement et reconstruire
+            le mécanisme toi-même, tu commences réellement à le maîtriser.
+        </p>
+
+    </div>
+
+    <div class="success">
+
+        <strong>Ratio recommandé :</strong>
+
+        <br><br>
+
+        30% théorie<br>
+        50% pratique<br>
+        20% projets / documentation / notes
+
+    </div>
+
+</section>
+
+
+<section id="checklist">
+
+    <div class="section-title">
+        <span class="number">18</span>
+        <h2>Checklist finale</h2>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Je maîtrise</h3>
+
+            <ul>
+                <li>☐ Linux</li>
+                <li>☐ Python</li>
+                <li>☐ C</li>
+                <li>☐ Git</li>
+                <li>☐ Réseaux</li>
+                <li>☐ HTTP</li>
+                <li>☐ SQL</li>
+                <li>☐ PostgreSQL</li>
+            </ul>
+        </div>
+
+        <div class="card">
+
+            <h3>Je comprends</h3>
+
+            <ul>
+                <li>☐ TCP/IP</li>
+                <li>☐ DNS</li>
+                <li>☐ TLS</li>
+                <li>☐ OS internals</li>
+                <li>☐ Authentication</li>
+                <li>☐ Cryptography</li>
+                <li>☐ Web architecture</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Je peux pratiquer</h3>
+
+            <ul>
+                <li>☐ Web security</li>
+                <li>☐ Pentest en lab</li>
+                <li>☐ Active Directory</li>
+                <li>☐ Reverse engineering</li>
+                <li>☐ Cloud security</li>
+                <li>☐ Detection</li>
+                <li>☐ Incident response</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="card">
+
+        <h2 class="green">La règle d'or</h2>
+
+        <p style="font-size:20px">
+
+            Ne cherche pas à mémoriser des "hacks".
+
+        </p>
+
+        <p>
+
+            Cherche à comprendre suffisamment le système pour savoir
+            <strong>pourquoi</strong> quelque chose fonctionne,
+            <strong>comment</strong> le reproduire dans un environnement
+            autorisé, et surtout <strong>comment le détecter et le corriger</strong>.
+
+        </p>
+
+        <div class="code">
+
+        HARDWARE
+            ↓
+        OPERATING SYSTEM
+            ↓
+        PROGRAMMING
+            ↓
+        NETWORKING
+            ↓
+        WEB
+            ↓
+        DATABASES
+            ↓
+        SECURITY
+            ↓
+        OFFENSIVE SECURITY
+            ↓
+        WINDOWS / AD
+            ↓
+        LOW LEVEL
+            ↓
+        REVERSE ENGINEERING
+            ↓
+        CLOUD
+            ↓
+        BLUE TEAM
+            ↓
+        SPECIALISATION
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    TECH × CYBER ROADMAP<br>
+    <span>all rights reserved. Eytan</span>
+</footer>
+
+</body>
+</html>
